@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management</title>
+    <script src="../backend/database/dbAPItasks.js" defer></script>
+    <script src="../backend/database/dbAPIusers.js" defer></script>
+    <script src="../backend/server.js" defer></script>
+    <script src="../backend/network.js" defer></script>
+    <script src="./index.js" defer></script>
+    <script src="../backend/FXMLHttpRequest.js" defer></script>
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <main>
+        <div class="page" id="signin">
+            <div class="container">
+                <div class="flex-item">
+                    <h1>Task Management</h1>
+                </div>
+                <div class="login">
+                    <h1>Sign In</h1>
+                    <h3>Please sign in to continue.</h3>
+                    <div action="">
+                        <label for="userName">
+                            Username:
+                        </label>
+                        <input type="text" id="userName" name="userName" placeholder="Enter your Username" required>
+
+                        <label for="password">
+                            Password:
+                        </label>
+                        <input type="password" id="password" name="password" placeholder="Enter your Password" required>
+
+                        <div class="wrap">
+                            <button type="submit" id="signinSubmit" name="signinSubmit" onclick="submit()">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                    <p>Don't have an account?
+                        <a href="./signup.html">
+                            Create new one
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="page" id="signup">
+            <div class="container">
+                <div class="flex-item">
+                    <h1>Task Management</h1>
+                </div>
+                <div class="login">
+                    <h1>Sign Up</h1>
+                    <form action="">
+                        <label for="firstName">
+                            First Name:
+                        </label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Enter First Name" required>
+
+                        <label for="lastName">
+                            Last Name:
+                        </label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Enter Last Name" required>
+
+                        <label for="userName2">
+                            Username:
+                        </label>
+                        <input type="text" id="userName2" name="userName2" placeholder="Enter Username" required>
+
+                        <label for="password2">
+                            Password (6 or more characters):
+                        </label>
+                        <input type="password2" id="password2" name="password2" placeholder="Enter Password" required>
+
+                        <label for="email">
+                            Email:
+                        </label>
+                        <input type="text" id="email" name="email" placeholder="Enter your Email" required>
+
+                        <div class="wrap">
+                            <button type="submit" id="signupSubmit" name="signupSubmit">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                    <p>Already have an account?
+                        <a href="./signin.html">
+                            Sign in
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="page active" id="tasksPage">
+            <div class="title">
+                <h1>My Tasks</h1>
+                <button id="addTask">
+                    + add new task
+                </button>
+            </div>
+            <div id="taskList">
+            </div>
+        </div>
+        <div class="page" id="popUp">
+            <div class="login popup">
+                <b class="close" id="close">x</b>
+                <h1>New Task</h1>
+                <div action="">
+                    <label for="description">
+                        Task:
+                    </label>
+                    <input type="description" id="description" name="description" placeholder="Enter a new task"
+                        required>
+
+                    <label for="title">
+                        Subject:
+                    </label>
+                    <input type="title" id="title" name="title" placeholder="Enter the subject of the task" required>
+
+                    <div class="wrap">
+                        <button type="submit" id="newTaskSubmit" name="newTaskSubmit">
+                            Create
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page" id="editPopUp">
+            <div class="login popup">
+                <b class="close" id="close2">x</b>
+                <h1>Update Task</h1>
+                <div action="">
+                    <label for="editDescription">
+                        Task:
+                    </label>
+                    <input type="editDescription" id="editDescription" name="editDescription"
+                        placeholder="Enter a new task" required>
+
+                    <label for="editTitle">
+                        Subject:
+                    </label>
+                    <input type="editTitle" id="editTitle" name="editTitle" placeholder="Enter the subject of the task"
+                        required>
+
+                    <div class="wrap">
+                        <button type="submit" id="editTaskSubmit" name="editTaskSubmit">
+                            Update
+                        </button>
+                    </div>
+                </div>
+            </div>
+    </main>
+</body>
+
+</html>
