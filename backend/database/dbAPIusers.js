@@ -1,6 +1,7 @@
 class dbAPIusers {
   // Load users from local storage
   loadUsers() {
+    console.log("Loading users");
     return JSON.parse(localStorage.getItem("users")) || [];
   }
 
@@ -24,6 +25,7 @@ class dbAPIusers {
 
   // Get all users
   getUsersList() {
+    console.log("Getting users");
     return this.loadUsers();
   }
 

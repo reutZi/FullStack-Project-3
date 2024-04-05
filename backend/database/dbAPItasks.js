@@ -2,8 +2,9 @@ class dbAPItasks {
   static idCounter = 1;
 
   // Load tasks from local storage
-  loadTasks() {
-    return JSON.parse(localStorage.getItem("tasks")) || [];
+  loadTasks(userName = "") {
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    return tasks.filter((task) => task.userName === userName)
   }
 
   // Save tasks to local storage
@@ -19,12 +20,12 @@ class dbAPItasks {
   }
 
   // GET - for a list of tasks
-  getTasksList() {
-    return this.loadTasks();
+  getTasksList(userName) {
+    return this.loadTasks(userName);
   }
 
   // POST - create a new task
-  addTask(title, description) {
+  addTask(title, description, userName) {
     console.log("Adding task");
     const tasks = this.loadTasks();
     const newTask = {
@@ -32,7 +33,8 @@ class dbAPItasks {
       title,
       date: new Date().toISOString(),
       description,
-      status: false
+      status: false,
+      userName
     };
     tasks.push(newTask);
     this.saveTasks(tasks);

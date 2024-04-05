@@ -9,6 +9,8 @@
     <script src="../backend/database/dbAPIusers.js" defer></script>
     <script src="../backend/server.js" defer></script>
     <script src="../backend/network.js" defer></script>
+    <script src="../backend/cookies.js" defer></script>
+    <script src="../backend/assets.js" defer></script>
     <script src="./index.js" defer></script>
     <script src="../backend/FXMLHttpRequest.js" defer></script>
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
@@ -17,7 +19,7 @@
 
 <body>
     <main>
-        <div class="page" id="signin">
+        <div class="page active" id="signin">
             <div class="container">
                 <div class="flex-item">
                     <h1>Task Management</h1>
@@ -43,7 +45,7 @@
                         </div>
                     </div>
                     <p>Don't have an account?
-                        <a href="./signup.html">
+                        <a id="aSignUp">
                             Create new one
                         </a>
                     </p>
@@ -58,16 +60,6 @@
                 <div class="login">
                     <h1>Sign Up</h1>
                     <form action="">
-                        <label for="firstName">
-                            First Name:
-                        </label>
-                        <input type="text" id="firstName" name="firstName" placeholder="Enter First Name" required>
-
-                        <label for="lastName">
-                            Last Name:
-                        </label>
-                        <input type="text" id="lastName" name="lastName" placeholder="Enter Last Name" required>
-
                         <label for="userName2">
                             Username:
                         </label>
@@ -78,10 +70,10 @@
                         </label>
                         <input type="password2" id="password2" name="password2" placeholder="Enter Password" required>
 
-                        <label for="email">
-                            Email:
+                        <label for="passwordValid">
+                            Retype Password:
                         </label>
-                        <input type="text" id="email" name="email" placeholder="Enter your Email" required>
+                        <input type="passwordValid" id="passwordValid" name="passwordValid" placeholder="Enter Password" required>
 
                         <div class="wrap">
                             <button type="submit" id="signupSubmit" name="signupSubmit">
@@ -90,14 +82,14 @@
                         </div>
                     </form>
                     <p>Already have an account?
-                        <a href="./signin.html">
+                        <a id="aSignIn">
                             Sign in
                         </a>
                     </p>
                 </div>
             </div>
         </div>
-        <div class="page active" id="tasksPage">
+        <div class="page" id="tasksPage">
             <div class="title">
                 <h1>My Tasks</h1>
                 <button id="addTask">

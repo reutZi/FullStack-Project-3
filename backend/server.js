@@ -10,8 +10,8 @@ class server {
     const method = parsedData.data.method;
 
     if (method === "GET") {
-      if (object === "tasks") { 
-        func(this.dbTasks.getTasksList());
+      if (object.tasks) { 
+        func(this.dbTasks.getTasksList(object.userName));
       } else if (object === "users") { 
         func(this.dbUsers.getUsersList());
       } else if (object.taskId) { 
@@ -25,7 +25,8 @@ class server {
       if (object.title && object.description) { 
         func(this.dbTasks.addTask(
           object.title,
-          object.description
+          object.description,
+          object.userName
         ));
       } else if (object.userName && object.password) {
         func(this.dbUsers.addUser(object.userName, object.password));

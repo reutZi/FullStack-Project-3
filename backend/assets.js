@@ -2,8 +2,6 @@
 function handleLogin(user) {
   // Set user information in cookie with expiration time of 6 hours
   setCookie("user", JSON.stringify(user), 6);
-  // Redirect to index page
-  window.parent.location.href = "../index.html";
 }
 
 // Function to handle user logout
