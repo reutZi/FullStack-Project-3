@@ -175,6 +175,7 @@ function printTask(newTask) {
             <input type="hidden" class="task-id" value="${newTask.id}">
             <input type="checkbox" class="task-checkbox">
             <span class="task-title">${newTask.title}</span>
+            <br>
             <span class="task-description">${newTask.description}</span>
             <i class='bx bx-trash' id="delete" ></i>
             <i class='bx bxs-edit-alt' id="edit"></i>

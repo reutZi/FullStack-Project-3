@@ -1,16 +1,16 @@
 class dbAPIusers {
-  // Load users from local storage
+  // ----------------------- Load users from local storage ----------------------- 
   loadUsers() {
     console.log("Loading users");
     return JSON.parse(localStorage.getItem("users")) || [];
   }
 
-  // Save users to local storage
+  // ----------------------- Save users to local storage --------------------------
   saveUsers(users) {
     localStorage.setItem("users", JSON.stringify(users));
   }
 
-  // Add a new user
+  // ----------------------- Add a new user ---------------------------------------
   addUser(userName, password) {
     const users = this.loadUsers();
     const existingUser = users.find((user) => user.userName === userName);
@@ -23,19 +23,19 @@ class dbAPIusers {
     return newUser;
   }
 
-  // Get all users
+  // ----------------------- Get all users -----------------------------------------
   getUsersList() {
     console.log("Getting users");
     return this.loadUsers();
   }
 
-  // Find a user by userName
+  // ----------------------- Find a user by userName -------------------------------
   getUser(userName) {
     const users = this.loadUsers();
     return users.find((user) => user.userName === userName);
   }
 
-  // Update a user's information
+  // ----------------------- Update a user's information ----------------------------
   updateUser(userName, newData) {
     const users = this.loadUsers();
     const user = users.find((user) => user.userName === userName);
@@ -47,7 +47,7 @@ class dbAPIusers {
     return false;
   }
 
-  // Delete a user
+  // ----------------------- Delete a user -------------------------------------------
   deleteUser(userName) {
     const users = this.loadUsers();
     const index = users.findIndex((user) => user.userName === userName);
