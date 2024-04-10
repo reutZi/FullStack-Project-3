@@ -1,3 +1,4 @@
+//-------------------dbAPITasks class ----------------------------------------
 class dbAPItasks {
   static idCounter = 1;
 

@@ -1,3 +1,4 @@
+//-------------------dbAPITusers class ------------------------------------------
 class dbAPIusers {
   // ----------------------- Load users from local storage ----------------------- 
   loadUsers() {

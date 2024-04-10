@@ -21,7 +21,7 @@ function getUserFromCookie() {
     return null;
 }
 
-// ----Function to delete a cookie by setting its expiration time to a past date--------------
+// ----Function to delete a cookie by setting its expiration time to a past date---------------
 function deleteCookie(name){
     setCookie(name, null, null);
 }

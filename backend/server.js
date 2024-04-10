@@ -3,7 +3,7 @@ class server {
     this.dbTasks = new dbAPItasks();
     this.dbUsers = new dbAPIusers();
   }
-
+//---------------Matching the command type to the appropriate functions-----------------
   requestHandler(data, func = (x) => {}) {
     const parsedData = JSON.parse(data);
     const object = parsedData.object;

@@ -1,6 +1,5 @@
 // ----------------------- Function to handle user login-------------------------
 function handleLogin(user) {
-  // Set user information in cookie with expiration time of 6 hours
   setCookie("user", JSON.stringify(user), 6);
 }
 
@@ -18,6 +17,5 @@ function showAlert() {
 
 // ----------------------- Function to reset failed login attempts-------------------
 function resetFailedAttempts() {
-  // Reset failed login attempts to 0
   localStorage.setItem('failedAttempts', 0);
 }
