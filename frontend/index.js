@@ -125,7 +125,7 @@ function checkUserName(userName, users) {
 }
 
 function checkPassword(password) {
-  if(password != document.getElementById("passwordValid").value){
+  if (password != document.getElementById("passwordValid").value) {
     alert("Passwords do not match. Please try again.");
     return false;
   }
@@ -163,7 +163,7 @@ function onTasksPageLoad() {
       printTask(task);
     });
   };
-  request.send({tasks: true, userName: currentUser.userName});
+  request.send({ tasks: true, userName: currentUser.userName });
 }
 
 logout.addEventListener("click", logOut);
@@ -238,7 +238,12 @@ function addTask() {
   request.onload = function (newTask) {
     printTask(newTask);
   };
-  request.send({ title: title, description: description, status: false, userName: currentUser.userName});
+  request.send({
+    title: title,
+    description: description,
+    status: false,
+    userName: currentUser.userName,
+  });
   popUp.classList.remove("active");
   document.getElementById("title").value = "";
   document.getElementById("description").value = "";
