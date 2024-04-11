@@ -199,8 +199,8 @@ function printTask(newTask) {
   </div>
     <input type="hidden" class="task-id" value="${newTask.id}">
     <div>
-    <span id="task-title">${newTask.title}</span>
-    <span id="task-description">${newTask.description}</span>
+    <div><span id="task-title">${newTask.title}</span></div>
+    <div><span id="task-description">${newTask.description}</span></div>
     </div>
   <input type="checkbox" class="task-checkbox" value="${newTask.status}">
 `;
