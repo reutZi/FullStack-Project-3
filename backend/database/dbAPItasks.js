@@ -41,7 +41,6 @@ class dbAPItasks {
 
   //-----------------------  POST - create a new task---------------------------
   addTask(title, description, userName) {
-    console.log("Adding task");
     const tasks = this.loadTasks(userName);
     const newTask = {
       id: this.updateCounter(),

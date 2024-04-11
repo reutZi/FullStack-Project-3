@@ -162,21 +162,24 @@ button {
 	transform: translate(-50% , -50%);
  }
 
-.task {
+ .task {
 	box-shadow: 0 0 20px #8ed59b;
 	margin: 1% 1%;
 	display: flex;
 	color: #4a4d4b;
 	align-items: center;
+	justify-content: space-between;
   }
   
   .actions {
 	margin-right: 10px;
 	font-size: 1.5rem;
+	margin-right: 50px;
   }
   
   #task-title {
 	font-size: x-large;
+	margin-right: 15px;
   }
   
   #task-description {
@@ -185,7 +188,7 @@ button {
   
   .task-checkbox {
 	transform: scale(1.4);
-	margin-right: 1rem; /* Pushes the checkbox to the far right */
+	margin-right: 400px; /* Pushes the checkbox to the far right */
   }
 
   #logout{

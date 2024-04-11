@@ -11,14 +11,14 @@ const tasksPage = document.getElementById("tasksPage");
 const aSignIn = document
   .getElementById("aSignIn")
   .addEventListener("click", function () {
+    removeActive();
     signInPage.classList.add("active");
-    signUpPage.classList.remove("active");
   });
 
 const aSignUp = document
   .getElementById("aSignUp")
   .addEventListener("click", function () {
-    signInPage.classList.remove("active");
+    removeActive();
     signUpPage.classList.add("active");
   });
 
@@ -33,7 +33,7 @@ signinSubmit.addEventListener("click", function (event) {
     submit(users);
   };
   request.send("users");
-  var inputs = document.querySelectorAll("input");
+  var inputs = document.querySelectorAll(".textInput");
   inputs.forEach((input) => {
     input.value = "";
   });
@@ -47,7 +47,7 @@ function submit(users) {
     let failedAttempts = localStorage.getItem("failedAttempts") || 0;
     localStorage.setItem("failedAttempts", failedAttempts);
     if (user.password === password.value) {
-      signInPage.classList.remove("active");
+      removeActive();
       tasksPage.classList.add("active");
       handleLogin(user);
       onTasksPageLoad();
@@ -90,7 +90,7 @@ signupSubmit.addEventListener("click", function (event) {
     addUser(users);
   };
   request.send("users");
-  var inputs = document.querySelectorAll("input");
+  var inputs = document.querySelectorAll(".textInput");
   inputs.forEach((input) => {
     input.value = "";
   });
@@ -107,7 +107,7 @@ function addUser(users) {
     const request = new FXMLHttpRequest();
     request.open("POST", "");
     request.onload = function (newUser) {
-      signUpPage.classList.remove("active");
+      removeActive();
       tasksPage.classList.add("active");
       handleLogin(newUser);
     };
@@ -192,16 +192,17 @@ function printTask(newTask) {
   const taskList = document.getElementById("taskList");
   const taskElement = document.createElement("div");
   taskElement.classList.add("task");
-  taskElement.dataset.taskId = newTask.id;
   taskElement.innerHTML = `
   <div class="actions">
     <i class='bx bx-trash' id="delete"></i>
     <i class='bx bxs-edit-alt' id="edit"></i>
   </div>
     <input type="hidden" class="task-id" value="${newTask.id}">
+    <div>
     <span id="task-title">${newTask.title}</span>
     <span id="task-description">${newTask.description}</span>
-  <input type="checkbox" class="task-checkbox">
+    </div>
+  <input type="checkbox" class="task-checkbox" value="${newTask.status}">
 `;
   taskList.appendChild(taskElement);
   const checkbox = taskElement.querySelector('input[type="checkbox"]');
@@ -251,6 +252,8 @@ function addTask() {
 
 function deleteTask(event) {
   const taskElement = event.target.closest(".task");
+  console.log("Delete task", taskElement)
+  console.log("id value", taskElement.querySelector(".task-id").value);
   const taskId = parseInt(taskElement.querySelector(".task-id").value);
   const request = new FXMLHttpRequest();
   request.open("DELETE", "");
@@ -301,7 +304,7 @@ function updateTask() {
 
 function logOut() {
   deleteCookie("user");
-  tasksPage.classList.remove("active");
+  removeActive();
   signInPage.classList.add("active");
   const taskList = document.getElementById("taskList");
   taskList.innerHTML = "";
@@ -313,3 +316,11 @@ function logOut() {
 //   document.getElementById(newPage).classList.add('active');
 //   localStorage.setItem('currentPage', currentPage);
 // }
+
+function removeActive() {
+  var pages = document.querySelectorAll(".page");
+  pages.forEach((page) => {
+    if(page.classList.contains("active"))
+      page.classList.remove("active");
+  });
+}
