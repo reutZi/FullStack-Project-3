@@ -125,6 +125,11 @@ function checkUserName(userName, users) {
 }
 
 function checkPassword(password) {
+  if(password != document.getElementById("passwordValid").value){
+    alert("Passwords do not match. Please try again.");
+    return false;
+  }
+
   if (password.length < 6) {
     alert("Password must be at least 6 characters long.");
     return false;
