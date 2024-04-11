@@ -172,14 +172,15 @@ function printTask(newTask) {
   taskElement.classList.add("task");
   taskElement.dataset.taskId = newTask.id;
   taskElement.innerHTML = `
-            <input type="hidden" class="task-id" value="${newTask.id}">
-            <input type="checkbox" class="task-checkbox">
-            <span class="task-title">${newTask.title}</span>
-            <br>
-            <span class="task-description">${newTask.description}</span>
-            <i class='bx bx-trash' id="delete" ></i>
-            <i class='bx bxs-edit-alt' id="edit"></i>
-        `;
+  <div class="actions">
+    <i class='bx bx-trash' id="delete"></i>
+    <i class='bx bxs-edit-alt' id="edit"></i>
+  </div>
+    <input type="hidden" class="task-id" value="${newTask.id}">
+    <span id="task-name">${newTask.title}</span>
+    <span id="task-description">${newTask.description}</span>
+  <input type="checkbox" class="task-checkbox">
+`;
   taskList.appendChild(taskElement);
   const checkbox = taskElement.querySelector('input[type="checkbox"]');
   checkbox.addEventListener("change", taskStatusChanged);

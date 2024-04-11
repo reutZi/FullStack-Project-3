@@ -107,6 +107,7 @@ button {
     grid-gap: 2rem;
     margin: 1rem;
 }
+
 #pencil{
 	margin-right: 1rem ;
     width: 4rem;
@@ -117,15 +118,12 @@ button {
 	width:15%;
 }
 
-.task{
-	border-radius: 0px; 
-	box-shadow: 0 0 20px #8ed59b;
-	margin: 1% 1%;
-	display: flex;
-	width:95%;
-	color: #4a4d4b;
-}
 
+.name-task{
+	display: grid;
+	flex-grow: 1;
+  padding: 0 10px;
+}
 .task input{
 	margin-left: 0px;
 }
@@ -150,3 +148,32 @@ button {
 	top:50%;
 	transform: translate(-50% , -50%);
  }
+/*index.js style*/
+.task {
+	box-shadow: 0 0 20px #8ed59b;
+	margin: 1% 1%;
+	display: flex;
+	color: #4a4d4b;
+	align-items: center;
+  }
+  
+  .actions {
+	margin-right: 10px;
+	font-size: 1.5rem;
+  }
+  
+  #task-name {
+	font-size: x-large;
+  }
+  
+  #task-description {
+	font-size: large;
+  }
+  
+  .task-checkbox {
+	transform: scale(1.4);
+	margin-right: 1rem; /* Pushes the checkbox to the far right */
+  }
+  
+  
+  
