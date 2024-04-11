@@ -1,12 +1,26 @@
 //-------------------dbAPITasks class ----------------------------------------
 class dbAPItasks {
-  static idCounter = 1;
+  updateCounter() {
+    var counter = localStorage.getItem("idCounter");
+    if (counter === null) {
+      localStorage.setItem("idCounter", 1);
+      return 1;
+    } else {
+      counter = parseInt(counter) + 1;
+      localStorage.setItem("idCounter", counter);
+      return counter;
+    }
+  }
 
   //----------------------- Load tasks from local storage---------------------
   loadTasks(userName = "") {
     const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    return tasks.filter((task) => task.userName === userName)
-  }
+    if (userName === "") {
+        return tasks;
+    } else {
+        return tasks.filter((task) => task.userName === userName);
+    }
+}
 
   // ----------------------- Save tasks to local storage----------------------- 
   saveTasks(tasks) {
@@ -28,9 +42,9 @@ class dbAPItasks {
   //-----------------------  POST - create a new task---------------------------
   addTask(title, description, userName) {
     console.log("Adding task");
-    const tasks = this.loadTasks();
+    const tasks = this.loadTasks(userName);
     const newTask = {
-      id: dbAPItasks.idCounter++,
+      id: this.updateCounter(),
       title,
       date: new Date().toISOString(),
       description,

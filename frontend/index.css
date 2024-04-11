@@ -16,6 +16,7 @@ body {
 h1 { 
 	color: #8ed59b; 
 	margin:2%;
+	font-size: 2rem;
 } 
 
 label { 
@@ -40,6 +41,33 @@ input {
 
 a {
 	color: #304de0;
+}
+ 
+button { 
+	padding: 15px; 
+	border-radius: 10px; 
+	margin-top: 15px; 
+	margin-bottom: 15px; 
+	border: none; 
+	color: white; 
+	cursor: pointer;
+	background-color: #8ed59b; 
+	font-size: 16px; 
+	font-family: "Comic Sans MS";
+	font-size: 1.5rem;
+}  
+
+#addTask{
+	background-color: #8ed59b;  
+	width: 5%; 
+	text-align: center;
+}
+
+#logOut{
+	background-color: #a33030; 
+	width: 10%; 
+	text-align: center;
+	margin-left: 60%;
 }
 
 .wrap { 
@@ -75,19 +103,6 @@ a {
     width: 9%;
 }
 
-button { 
-	padding: 15px; 
-	border-radius: 10px; 
-	margin-top: 15px; 
-	margin-bottom: 15px; 
-	border: none; 
-	color: white; 
-	cursor: pointer; 
-	background-color: #8ed59b; 
-	width: 100%; 
-	font-size: 16px; 
-} 
-
 .login {
 	background-color: #fff; 
 	border-radius: 15px; 
@@ -101,6 +116,7 @@ button {
 .title{
 	display: flex;
 }
+
 .flex-item{
 	display: grid;
     grid-template-columns: auto auto auto auto;
@@ -109,15 +125,12 @@ button {
 }
 
 #pencil{
-	margin-right: 1rem ;
+	margin-right: 1rem;
+	margin-top: 1rem;
     width: 4rem;
+	height: 4rem;
 	display: grid;
 }
-
-.title button{
-	width:15%;
-}
-
 
 .name-task{
 	display: grid;
@@ -148,7 +161,7 @@ button {
 	top:50%;
 	transform: translate(-50% , -50%);
  }
-/*index.js style*/
+
 .task {
 	box-shadow: 0 0 20px #8ed59b;
 	margin: 1% 1%;
@@ -162,7 +175,7 @@ button {
 	font-size: 1.5rem;
   }
   
-  #task-name {
+  #task-title {
 	font-size: x-large;
   }
   
@@ -173,6 +186,10 @@ button {
   .task-checkbox {
 	transform: scale(1.4);
 	margin-right: 1rem; /* Pushes the checkbox to the far right */
+  }
+
+  #logout{
+	margin-left: 20px;
   }
   
   

@@ -19,7 +19,7 @@ class server {
       } else if (object.userName) {
         func(this.dbUsers.getUser(object.userName));
       } else {
-        ("Error: Invalid object");
+        console.log("Error: Invalid object");
       }
     } else if (method === "POST") {
       if (object.title && object.description) { 
@@ -31,15 +31,16 @@ class server {
       } else if (object.userName && object.password) {
         func(this.dbUsers.addUser(object.userName, object.password));
       } else {
-        func("Error: Invalid object");
+        console.log("Error: Invalid object");
       }
     } else if (method === "PUT") {
+      console.log("PUT request", object);
       if (object.taskId) {
         this.dbTasks.updateTask(object.taskId, object);
       } else if (object.userName) {
         func(this.dbUsers.updateUser(object.userName, object));
       } else {
-        func("Error: Invalid object");
+         console.log("Error: Invalid object");
       }
     } else if (method === "DELETE") {
       if (object.taskId) {
@@ -47,7 +48,7 @@ class server {
       } else if (object.userName) {
         func(this.dbUsers.deleteUser(object.userName));
       } else {
-        func("Error: Invalid object");
+        console.log("Error: Invalid object");
       }
     }
   }

@@ -1,3 +1,5 @@
+//window.addEventListener('popstate', nav);
+
 //pages:
 // 1. signin
 const signInPage = document.getElementById("signin");
@@ -22,6 +24,7 @@ const aSignUp = document
 
 // all the functions for the signin page
 const signinSubmit = document.getElementById("signinSubmit");
+
 signinSubmit.addEventListener("click", function (event) {
   event.preventDefault(); // Prevent the default form submission
   const request = new FXMLHttpRequest();
@@ -30,6 +33,10 @@ signinSubmit.addEventListener("click", function (event) {
     submit(users);
   };
   request.send("users");
+  var inputs = document.querySelectorAll("input");
+  inputs.forEach((input) => {
+    input.value = "";
+  });
 });
 
 function submit(users) {
@@ -43,6 +50,7 @@ function submit(users) {
       signInPage.classList.remove("active");
       tasksPage.classList.add("active");
       handleLogin(user);
+      onTasksPageLoad();
       failedAttempts = 0;
       localStorage.setItem("failedAttempts", failedAttempts);
     } else {
@@ -82,10 +90,15 @@ signupSubmit.addEventListener("click", function (event) {
     addUser(users);
   };
   request.send("users");
+  var inputs = document.querySelectorAll("input");
+  inputs.forEach((input) => {
+    input.value = "";
+  });
+  onTasksPageLoad();
 });
 
 function addUser(users) {
-    console.log("Adding user");
+  console.log("Adding user");
   const username = document.getElementById("userName2");
   const password = document.getElementById("password2");
   const user = { userName: username.value, password: password.value };
@@ -132,9 +145,11 @@ const closePopUp = document.getElementById("close");
 const closeEditPopUp = document.getElementById("close2");
 const newTaskSubmit = document.getElementById("newTaskSubmit");
 const editTaskSubmit = document.getElementById("editTaskSubmit");
+const logout = document.getElementById("logOut");
 var editedTask;
 
-window.addEventListener("load", function () {
+function onTasksPageLoad() {
+  console.log("onTasksPageLoad");
   var currentUser = getUserFromCookie();
   const request = new FXMLHttpRequest();
   request.open("GET", "");
@@ -144,7 +159,9 @@ window.addEventListener("load", function () {
     });
   };
   request.send({tasks: true, userName: currentUser.userName});
-});
+}
+
+logout.addEventListener("click", logOut);
 
 addTaskButton.addEventListener("click", () => {
   popUp.classList.add("active");
@@ -177,7 +194,7 @@ function printTask(newTask) {
     <i class='bx bxs-edit-alt' id="edit"></i>
   </div>
     <input type="hidden" class="task-id" value="${newTask.id}">
-    <span id="task-name">${newTask.title}</span>
+    <span id="task-title">${newTask.title}</span>
     <span id="task-description">${newTask.description}</span>
   <input type="checkbox" class="task-checkbox">
 `;
@@ -217,7 +234,6 @@ function addTask() {
     printTask(newTask);
   };
   request.send({ title: title, description: description, status: false, userName: currentUser.userName});
-
   popUp.classList.remove("active");
   document.getElementById("title").value = "";
   document.getElementById("description").value = "";
@@ -237,8 +253,8 @@ function deleteTask(event) {
 function editTask(event) {
   console.log("Edit task");
   editedTask = event.target.closest(".task");
-  const titleElement = editedTask.querySelector(".task-title");
-  const descriptionElement = editedTask.querySelector(".task-description");
+  const titleElement = editedTask.querySelector("#task-title");
+  const descriptionElement = editedTask.querySelector("#task-description");
 
   // Get the current title and description values
   const currentTitle = titleElement.textContent;
@@ -254,8 +270,9 @@ function editTask(event) {
 
 function updateTask() {
   const taskId = parseInt(editedTask.querySelector(".task-id").value);
-  const titleElement = editedTask.querySelector(".task-title");
-  const descriptionElement = editedTask.querySelector(".task-description");
+  console.log("Update task", editedTask.querySelector(".task-id").value);
+  const titleElement = editedTask.querySelector("#task-title");
+  const descriptionElement = editedTask.querySelector("#task-description");
   const newTitle = document.getElementById("editTitle").value;
   const newDescription = document.getElementById("editDescription").value;
 
@@ -271,3 +288,18 @@ function updateTask() {
   // Hide the popup window
   editPopUp.classList.remove("active");
 }
+
+function logOut() {
+  deleteCookie("user");
+  tasksPage.classList.remove("active");
+  signInPage.classList.add("active");
+  const taskList = document.getElementById("taskList");
+  taskList.innerHTML = "";
+}
+
+//  function nav(){
+//   var currentPage = document.querySelector('.active').classList.remove('active');
+//   var newPage  = localStorage.getItem('currentPage');
+//   document.getElementById(newPage).classList.add('active');
+//   localStorage.setItem('currentPage', currentPage);
+// }

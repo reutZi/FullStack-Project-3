@@ -2,7 +2,7 @@
 class dbAPIusers {
   // ----------------------- Load users from local storage ----------------------- 
   loadUsers() {
-    console.log("Loading users");
+    console.log("Loading users", localStorage.getItem("users"));
     return JSON.parse(localStorage.getItem("users")) || [];
   }
 
