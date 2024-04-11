@@ -16,13 +16,13 @@ class dbAPItasks {
   loadTasks(userName = "") {
     const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     if (userName === "") {
-        return tasks;
+      return tasks;
     } else {
-        return tasks.filter((task) => task.userName === userName);
+      return tasks.filter((task) => task.userName === userName);
     }
-}
+  }
 
-  // ----------------------- Save tasks to local storage----------------------- 
+  // ----------------------- Save tasks to local storage-----------------------
   saveTasks(tasks) {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }
@@ -48,7 +48,7 @@ class dbAPItasks {
       date: new Date().toISOString(),
       description,
       status: false,
-      userName
+      userName,
     };
     tasks.push(newTask);
     this.saveTasks(tasks);

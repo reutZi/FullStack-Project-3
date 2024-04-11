@@ -3,18 +3,18 @@ class server {
     this.dbTasks = new dbAPItasks();
     this.dbUsers = new dbAPIusers();
   }
-//---------------Matching the command type to the appropriate functions-----------------
+  //---------------Matching the command type to the appropriate functions-----------------
   requestHandler(data, func = (x) => {}) {
     const parsedData = JSON.parse(data);
     const object = parsedData.object;
     const method = parsedData.data.method;
 
     if (method === "GET") {
-      if (object.tasks) { 
+      if (object.tasks) {
         func(this.dbTasks.getTasksList(object.userName));
-      } else if (object === "users") { 
+      } else if (object === "users") {
         func(this.dbUsers.getUsersList());
-      } else if (object.taskId) { 
+      } else if (object.taskId) {
         func(this.dbTasks.getTask(object.taskId));
       } else if (object.userName) {
         func(this.dbUsers.getUser(object.userName));
@@ -22,12 +22,14 @@ class server {
         console.log("Error: Invalid object");
       }
     } else if (method === "POST") {
-      if (object.title && object.description) { 
-        func(this.dbTasks.addTask(
-          object.title,
-          object.description,
-          object.userName
-        ));
+      if (object.title && object.description) {
+        func(
+          this.dbTasks.addTask(
+            object.title,
+            object.description,
+            object.userName
+          )
+        );
       } else if (object.userName && object.password) {
         func(this.dbUsers.addUser(object.userName, object.password));
       } else {
@@ -40,7 +42,7 @@ class server {
       } else if (object.userName) {
         func(this.dbUsers.updateUser(object.userName, object));
       } else {
-         console.log("Error: Invalid object");
+        console.log("Error: Invalid object");
       }
     } else if (method === "DELETE") {
       if (object.taskId) {

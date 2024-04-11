@@ -1,5 +1,3 @@
-//window.addEventListener('popstate', nav);
-
 //pages:
 // 1. signin
 const signInPage = document.getElementById("signin");
@@ -192,6 +190,9 @@ function printTask(newTask) {
   const taskList = document.getElementById("taskList");
   const taskElement = document.createElement("div");
   taskElement.classList.add("task");
+  var checkboxHTML = newTask.status
+    ? '<input type="checkbox" class="task-checkbox" checked>'
+    : '<input type="checkbox" class="task-checkbox">';
   taskElement.innerHTML = `
   <div class="actions">
     <i class='bx bx-trash' id="delete"></i>
@@ -199,10 +200,10 @@ function printTask(newTask) {
   </div>
     <input type="hidden" class="task-id" value="${newTask.id}">
     <div>
-    <div><span id="task-title">${newTask.title}</span></div>
-    <div><span id="task-description">${newTask.description}</span></div>
+    <div id="divTitle"><span id="task-title">${newTask.title}</span></div>
+    <div id="divDescription"><span id="task-description">${newTask.description}</span></div>
     </div>
-  <input type="checkbox" class="task-checkbox" value="${newTask.status}">
+    ${checkboxHTML}
 `;
   taskList.appendChild(taskElement);
   const checkbox = taskElement.querySelector('input[type="checkbox"]');
@@ -216,7 +217,7 @@ function printTask(newTask) {
 function taskStatusChanged(event) {
   const checkbox = event.target;
   const taskElement = checkbox.closest(".task");
-  const taskId = parseInt(taskElement.dataset.taskId);
+  const taskId = parseInt(taskElement.querySelector(".task-id").value);
 
   const request = new FXMLHttpRequest();
   request.open("PUT", "");
@@ -252,8 +253,6 @@ function addTask() {
 
 function deleteTask(event) {
   const taskElement = event.target.closest(".task");
-  console.log("Delete task", taskElement)
-  console.log("id value", taskElement.querySelector(".task-id").value);
   const taskId = parseInt(taskElement.querySelector(".task-id").value);
   const request = new FXMLHttpRequest();
   request.open("DELETE", "");
@@ -310,17 +309,9 @@ function logOut() {
   taskList.innerHTML = "";
 }
 
-//  function nav(){
-//   var currentPage = document.querySelector('.active').classList.remove('active');
-//   var newPage  = localStorage.getItem('currentPage');
-//   document.getElementById(newPage).classList.add('active');
-//   localStorage.setItem('currentPage', currentPage);
-// }
-
 function removeActive() {
   var pages = document.querySelectorAll(".page");
   pages.forEach((page) => {
-    if(page.classList.contains("active"))
-      page.classList.remove("active");
+    if (page.classList.contains("active")) page.classList.remove("active");
   });
 }

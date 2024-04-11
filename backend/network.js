@@ -1,7 +1,7 @@
-class network{
-    ser = new server();
+class network {
+  ser = new server();
 
-    sendToServer(data, func = () => { }) {
-        return this.ser.requestHandler(data, func);
-    }
+  sendToServer(data, func = () => {}) {
+    return this.ser.requestHandler(data, func);
+  }
 }

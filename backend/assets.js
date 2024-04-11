@@ -5,5 +5,5 @@ function handleLogin(user) {
 
 // ----------------------- Function to reset failed login attempts-------------------
 function resetFailedAttempts() {
-  localStorage.setItem('failedAttempts', 0);
+  localStorage.setItem("failedAttempts", 0);
 }
