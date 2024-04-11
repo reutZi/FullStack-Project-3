@@ -90,7 +90,7 @@ button {
 
 .container {
     display: flex;
-    gap: 30%;
+    gap: 5%;
     margin-top: 4%;
 }
 .item-grid{
@@ -98,7 +98,7 @@ button {
 	color: dimgray;
 }
 .flex-item {
-	font-size: 1.5rem;
+	font-size: xx-large;
 	justify-content:flex-start;
     width: 9%;
 }
@@ -110,7 +110,7 @@ button {
 	padding: 10px; 
 	width: 30%; 
 	text-align: center;
-	margin: 3rem 0 0; 
+	margin: 3rem 5; 
 }
 
 .title{
@@ -163,33 +163,34 @@ button {
  }
 
  .task {
-	box-shadow: 0 0 20px #8ed59b;
-	margin: 1% 1%;
-	display: flex;
-	color: #4a4d4b;
-	align-items: center;
-	justify-content: space-between;
-  }
-  
-  .actions {
-	margin-right: 10px;
-	font-size: 1.5rem;
-	margin-right: 50px;
-  }
-  
-  #task-title {
-	font-size: x-large;
-	margin-right: 15px;
-  }
-  
-  #task-description {
-	font-size: large;
-  }
-  
-  .task-checkbox {
-	transform: scale(1.4);
-	margin-right: 400px; /* Pushes the checkbox to the far right */
-  }
+    box-shadow: 0 0 20px #8ed59b;
+    margin: 1% 1%;
+    display: flex;
+    color: #4a4d4b;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.actions {
+    margin-right: 10px;
+    font-size: 1.5rem;
+}
+
+#task-title {
+    font-size: x-large;
+    margin-right: 15px;
+    white-space: nowrap;
+}
+
+#task-description {
+    font-size: large;
+    white-space: nowrap;
+}
+
+.task-checkbox {
+    transform: scale(1.4);
+}
+
 
   #logout{
 	margin-left: 20px;
